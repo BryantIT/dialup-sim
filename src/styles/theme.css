@@ -1,0 +1,127 @@
+/* Retro (Windows 95/98-style) theme foundation */
+
+:root {
+  --face: #c0c0c0;
+  --face-dark: #808080;
+  --border-light: #ffffff;
+  --border-lightest: #dfdfdf;
+  --border-dark: #808080;
+  --border-darkest: #000000;
+  --titlebar-start: #000080;
+  --titlebar-end: #1084d0;
+  --titlebar-text: #ffffff;
+  --desktop-bg: #008080;
+  --text: #000000;
+  --link: #0000ee;
+  --font-ui: Tahoma, "MS Sans Serif", Geneva, Verdana, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: var(--text);
+  background: var(--desktop-bg);
+}
+
+.desktop {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* Raised beveled edge (buttons, panels, window frame) */
+.bevel-out {
+  border-top: 1px solid var(--border-light);
+  border-left: 1px solid var(--border-light);
+  border-right: 1px solid var(--border-darkest);
+  border-bottom: 1px solid var(--border-darkest);
+  box-shadow:
+    inset 1px 1px 0 var(--border-lightest),
+    inset -1px -1px 0 var(--border-dark);
+}
+
+/* Sunken beveled edge (inputs, status bar, inset panels) */
+.bevel-in {
+  border-top: 1px solid var(--border-darkest);
+  border-left: 1px solid var(--border-darkest);
+  border-right: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  box-shadow:
+    inset 1px 1px 0 var(--border-dark),
+    inset -1px -1px 0 var(--border-lightest);
+}
+
+.win-window {
+  background: var(--face);
+  padding: 2px;
+}
+
+.win-titlebar {
+  background: linear-gradient(90deg, var(--titlebar-start), var(--titlebar-end));
+  color: var(--titlebar-text);
+  font-weight: bold;
+  padding: 3px 4px 3px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  letter-spacing: 0.2px;
+}
+
+.win-titlebar-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.win-window-body {
+  background: var(--face);
+  padding: 12px;
+}
+
+.win-button {
+  background: var(--face);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+
+.win-button:active {
+  border-top: 1px solid var(--border-darkest);
+  border-left: 1px solid var(--border-darkest);
+  border-right: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  box-shadow:
+    inset 1px 1px 0 var(--border-dark),
+    inset -1px -1px 0 var(--border-lightest);
+}
+
+.win-button:disabled {
+  color: var(--border-dark);
+  cursor: default;
+}
+
+.win-input {
+  background: #ffffff;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  padding: 3px 5px;
+}
+
+.win-panel {
+  background: var(--face);
+  padding: 10px;
+}
