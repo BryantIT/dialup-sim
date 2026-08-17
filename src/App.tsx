@@ -8,6 +8,12 @@ import DevStateSwitcher from "./dev/DevStateSwitcher";
 
 function App() {
   const [state, setState] = useState<AppState>("dialer");
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  function handleDial(number: string) {
+    setPhoneNumber(number);
+    setState("connecting");
+  }
 
   return (
     <div className="desktop">
@@ -16,8 +22,8 @@ function App() {
           <span className="win-titlebar-text">Dial-Up Networking</span>
         </div>
         <div className="win-window-body">
-          {state === "dialer" && <DialerScreen />}
-          {state === "connecting" && <ConnectingScreen />}
+          {state === "dialer" && <DialerScreen onDial={handleDial} />}
+          {state === "connecting" && <ConnectingScreen number={phoneNumber} />}
           {state === "connected" && <ConnectedScreen />}
           {state === "failed" && <FailedScreen />}
         </div>

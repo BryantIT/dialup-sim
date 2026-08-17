@@ -1,10 +1,19 @@
-export default function ConnectingScreen() {
+type Props = {
+  number: string;
+};
+
+export default function ConnectingScreen({ number }: Props) {
+  const display = number ? number : "your ISP";
+
   return (
     <div className="win-panel bevel-in">
-      <p>
-        <strong>Connecting screen</strong> (placeholder — built in Phase 2)
+      <p style={{ marginTop: 0 }}>
+        <strong>Dialing {display}…</strong>
       </p>
-      <p>Dial/handshake sound, staged status text, and the 10% busy-signal roll will go here.</p>
+      <p>
+        (Placeholder — built in Phase 2: handshake sound, staged status text,
+        and the 10% busy-signal roll will go here.)
+      </p>
     </div>
   );
 }
