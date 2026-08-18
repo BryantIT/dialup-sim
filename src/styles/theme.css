@@ -39,7 +39,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 24px 24px 56px;
+}
+
+@media (max-width: 600px) {
+  .desktop {
+    padding: 10px 10px 46px;
+  }
+
+  .browser-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .win-titlebar-text {
+    font-size: 12px;
+  }
 }
 
 /* Raised beveled edge (buttons, panels, window frame) */
@@ -186,6 +200,10 @@ body {
   margin-bottom: 8px;
 }
 
+.browser-toolbar input {
+  min-width: 60px;
+}
+
 .browser-viewport {
   background: #ffffff;
   min-height: min(60vh, 520px);
@@ -197,4 +215,54 @@ body {
   margin-top: 8px;
   padding: 3px 6px;
   font-size: 11px;
+}
+
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  background: var(--face);
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 4px;
+  z-index: 500;
+}
+
+.taskbar-start {
+  font-weight: bold;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  padding: 3px 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.taskbar-start-icon {
+  color: #008000;
+}
+
+.taskbar-clock {
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.crt-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 900;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.08) 0px,
+      rgba(0, 0, 0, 0.08) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.25) 100%);
 }

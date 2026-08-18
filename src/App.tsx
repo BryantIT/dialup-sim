@@ -6,6 +6,7 @@ import ConnectedScreen from "./screens/ConnectedScreen";
 import FailedScreen from "./screens/FailedScreen";
 import DevStateSwitcher from "./dev/DevStateSwitcher";
 import SitePreview from "./dev/SitePreview";
+import Taskbar from "./components/retro/Taskbar";
 
 function App() {
   const [state, setState] = useState<AppState>("dialer");
@@ -29,7 +30,7 @@ function App() {
   }
 
   const windowTitle = state === "connected" ? "NetZone Browser" : "Dial-Up Networking";
-  const windowWidth = state === "connected" ? "min(92vw, 960px)" : 480;
+  const windowWidth = state === "connected" ? "min(92vw, 960px)" : "min(92vw, 480px)";
 
   return (
     <div className="desktop">
@@ -38,7 +39,7 @@ function App() {
           <span className="win-titlebar-text">{windowTitle}</span>
         </div>
         <div className="win-window-body">
-          {state === "dialer" && <DialerScreen onDial={handleDial} />}
+          {state === "dialer" && <DialerScreen onDial={handleDial} initialNumber={phoneNumber} />}
           {state === "connecting" && (
             <ConnectingScreen number={phoneNumber} onSettled={handleConnectingSettled} />
           )}
@@ -46,6 +47,8 @@ function App() {
           {state === "failed" && <FailedScreen onRedial={handleRedial} />}
         </div>
       </div>
+      <Taskbar />
+      <div className="crt-overlay" />
       {import.meta.env.DEV && <DevStateSwitcher state={state} setState={setState} />}
       {import.meta.env.DEV && <SitePreview />}
     </div>

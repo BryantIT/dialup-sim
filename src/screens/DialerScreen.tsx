@@ -2,10 +2,11 @@ import { useState } from "react";
 
 type Props = {
   onDial: (number: string) => void;
+  initialNumber?: string;
 };
 
-export default function DialerScreen({ onDial }: Props) {
-  const [number, setNumber] = useState("");
+export default function DialerScreen({ onDial, initialNumber = "" }: Props) {
+  const [number, setNumber] = useState(initialNumber);
   const [dialing, setDialing] = useState(false);
 
   function handleSubmit(e: React.FormEvent) {

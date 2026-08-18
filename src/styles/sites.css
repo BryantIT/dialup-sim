@@ -230,6 +230,12 @@
   flex-shrink: 0;
 }
 
+.guestbook-form-row input,
+.guestbook-form-row textarea {
+  flex: 1;
+  min-width: 0;
+}
+
 .guestbook-entries {
   list-style: none;
   padding: 0;
