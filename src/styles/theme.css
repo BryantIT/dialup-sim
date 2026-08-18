@@ -125,3 +125,56 @@ body {
   background: var(--face);
   padding: 10px;
 }
+
+.progress-track {
+  height: 20px;
+  background: #ffffff;
+  margin: 14px 0;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--titlebar-start),
+    var(--titlebar-start) 6px,
+    var(--titlebar-end) 6px,
+    var(--titlebar-end) 12px
+  );
+  width: 0%;
+  animation-name: progress-fill-anim;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes progress-fill-anim {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.modem-lights {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.modem-light {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.modem-light.blink {
+  animation: modem-blink 0.6s steps(1) infinite;
+}
+
+@keyframes modem-blink {
+  50% {
+    opacity: 0.15;
+  }
+}

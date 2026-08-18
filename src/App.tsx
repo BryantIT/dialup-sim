@@ -15,6 +15,14 @@ function App() {
     setState("connecting");
   }
 
+  function handleConnectingSettled(success: boolean) {
+    setState(success ? "connected" : "failed");
+  }
+
+  function handleRedial() {
+    setState("dialer");
+  }
+
   return (
     <div className="desktop">
       <div className="win-window bevel-out" style={{ width: 480 }}>
@@ -23,9 +31,11 @@ function App() {
         </div>
         <div className="win-window-body">
           {state === "dialer" && <DialerScreen onDial={handleDial} />}
-          {state === "connecting" && <ConnectingScreen number={phoneNumber} />}
+          {state === "connecting" && (
+            <ConnectingScreen number={phoneNumber} onSettled={handleConnectingSettled} />
+          )}
           {state === "connected" && <ConnectedScreen />}
-          {state === "failed" && <FailedScreen />}
+          {state === "failed" && <FailedScreen onRedial={handleRedial} />}
         </div>
       </div>
       {import.meta.env.DEV && <DevStateSwitcher state={state} setState={setState} />}
