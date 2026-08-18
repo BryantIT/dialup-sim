@@ -1,28 +1,35 @@
-import { useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 
 type Props = {
   onDisconnect: () => void;
+  onHome: () => void;
+  currentAddress: string;
   children: ReactNode;
   statusText?: string;
 };
 
-export default function BrowserChrome({ onDisconnect, children, statusText = "Ready" }: Props) {
-  const [address, setAddress] = useState("");
+export default function BrowserChrome({
+  onDisconnect,
+  onHome,
+  currentAddress,
+  children,
+  statusText = "Ready",
+}: Props) {
+  const [address, setAddress] = useState(currentAddress);
+
+  useEffect(() => {
+    setAddress(currentAddress);
+  }, [currentAddress]);
 
   function handleGo(e: FormEvent) {
     e.preventDefault();
     // Address resolution against known mock sites arrives in Phase 7.
   }
 
-  function handleHome() {
-    setAddress("");
-    // Portal navigation arrives in Phase 5.
-  }
-
   return (
     <div>
       <form onSubmit={handleGo} className="browser-toolbar">
-        <button type="button" className="win-button bevel-out" onClick={handleHome}>
+        <button type="button" className="win-button bevel-out" onClick={onHome}>
           Home
         </button>
         <input

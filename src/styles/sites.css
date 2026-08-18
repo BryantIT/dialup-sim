@@ -6,6 +6,65 @@
   cursor: pointer;
 }
 
+.link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: var(--link);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.portal-page {
+  text-align: center;
+}
+
+.portal-logo {
+  font-size: 42px;
+  font-weight: bold;
+  color: #000080;
+  letter-spacing: 1px;
+}
+
+.portal-logo-bang {
+  color: #ff0000;
+}
+
+.portal-tagline {
+  font-style: italic;
+  margin-top: 0;
+}
+
+.portal-directory {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.portal-directory-item {
+  border-bottom: 1px dashed var(--border-dark);
+  padding: 10px 0;
+}
+
+.portal-directory-link {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.portal-directory-address {
+  font-size: 11px;
+  color: #006600;
+}
+
+.portal-directory-desc {
+  font-size: 12px;
+  margin-top: 2px;
+}
+
 .blink-text {
   animation: blink-text-anim 1s steps(1) infinite;
 }

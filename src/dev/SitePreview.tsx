@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { mockSites, getPageWeightKB } from "../sites";
+import SiteContent from "../components/SiteContent";
 
 export default function SitePreview() {
   const [open, setOpen] = useState(false);
@@ -58,9 +59,7 @@ export default function SitePreview() {
               ← Back to list
             </button>
             <div className="browser-viewport bevel-in">
-              {selectedSite.chunks.map((chunk, i) => (
-                <div key={i}>{chunk.node}</div>
-              ))}
+              <SiteContent site={selectedSite} />
             </div>
           </>
         ) : (
