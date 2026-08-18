@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import BrowserChrome from "../components/BrowserChrome";
-import PortalPage from "../components/PortalPage";
 import SiteContent from "../components/SiteContent";
-import { findSiteByAddress } from "../sites";
-
-const HOME_ADDRESS = "home.netzone.com";
+import { findSiteByAddress, mockSites } from "../sites";
+import { buildPortalSite, HOME_ADDRESS } from "../sites/portal";
+import { useThrottledLoad } from "../hooks/useThrottledLoad";
 
 type Props = {
   onDisconnect: () => void;
@@ -13,20 +12,34 @@ type Props = {
 export default function ConnectedScreen({ onDisconnect }: Props) {
   const [currentAddress, setCurrentAddress] = useState(HOME_ADDRESS);
 
-  function handleNavigate(address: string) {
+  const handleNavigate = useCallback((address: string) => {
     const site = findSiteByAddress(address);
     if (site) setCurrentAddress(site.address);
-  }
+  }, []);
 
-  function handleHome() {
+  const handleHome = useCallback(() => {
     setCurrentAddress(HOME_ADDRESS);
-  }
+  }, []);
 
-  const site = currentAddress === HOME_ADDRESS ? null : findSiteByAddress(currentAddress);
+  const portalSite = useMemo(() => buildPortalSite(mockSites, handleNavigate), [handleNavigate]);
+
+  const currentSite =
+    currentAddress === HOME_ADDRESS ? portalSite : (findSiteByAddress(currentAddress) ?? portalSite);
+
+  const { revealedCount, percent, downloadedKB, totalKB, isDone, speedKbps } = useThrottledLoad(currentSite);
+
+  const statusText = isDone
+    ? "Done"
+    : `Downloading… ${speedKbps.toFixed(1)} KB/s — ${percent}% (${downloadedKB.toFixed(1)}/${totalKB} KB)`;
 
   return (
-    <BrowserChrome onDisconnect={onDisconnect} onHome={handleHome} currentAddress={currentAddress}>
-      {site ? <SiteContent site={site} /> : <PortalPage onNavigate={handleNavigate} />}
+    <BrowserChrome
+      onDisconnect={onDisconnect}
+      onHome={handleHome}
+      currentAddress={currentAddress}
+      statusText={statusText}
+    >
+      <SiteContent site={currentSite} revealedCount={revealedCount} />
     </BrowserChrome>
   );
 }

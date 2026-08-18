@@ -65,6 +65,16 @@
   margin-top: 2px;
 }
 
+.image-placeholder {
+  border: 2px dashed var(--border-dark);
+  background: #e8e8e8;
+  color: #666666;
+  text-align: center;
+  padding: 30px 10px;
+  margin: 10px 0;
+  font-size: 12px;
+}
+
 .blink-text {
   animation: blink-text-anim 1s steps(1) infinite;
 }
