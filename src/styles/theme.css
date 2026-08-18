@@ -1,0 +1,268 @@
+/* Retro (Windows 95/98-style) theme foundation */
+
+:root {
+  --face: #c0c0c0;
+  --face-dark: #808080;
+  --border-light: #ffffff;
+  --border-lightest: #dfdfdf;
+  --border-dark: #808080;
+  --border-darkest: #000000;
+  --titlebar-start: #000080;
+  --titlebar-end: #1084d0;
+  --titlebar-text: #ffffff;
+  --desktop-bg: #008080;
+  --text: #000000;
+  --link: #0000ee;
+  --font-ui: Tahoma, "MS Sans Serif", Geneva, Verdana, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: var(--text);
+  background: var(--desktop-bg);
+}
+
+.desktop {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 24px 56px;
+}
+
+@media (max-width: 600px) {
+  .desktop {
+    padding: 10px 10px 46px;
+  }
+
+  .browser-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .win-titlebar-text {
+    font-size: 12px;
+  }
+}
+
+/* Raised beveled edge (buttons, panels, window frame) */
+.bevel-out {
+  border-top: 1px solid var(--border-light);
+  border-left: 1px solid var(--border-light);
+  border-right: 1px solid var(--border-darkest);
+  border-bottom: 1px solid var(--border-darkest);
+  box-shadow:
+    inset 1px 1px 0 var(--border-lightest),
+    inset -1px -1px 0 var(--border-dark);
+}
+
+/* Sunken beveled edge (inputs, status bar, inset panels) */
+.bevel-in {
+  border-top: 1px solid var(--border-darkest);
+  border-left: 1px solid var(--border-darkest);
+  border-right: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  box-shadow:
+    inset 1px 1px 0 var(--border-dark),
+    inset -1px -1px 0 var(--border-lightest);
+}
+
+.win-window {
+  background: var(--face);
+  padding: 2px;
+}
+
+.win-titlebar {
+  background: linear-gradient(90deg, var(--titlebar-start), var(--titlebar-end));
+  color: var(--titlebar-text);
+  font-weight: bold;
+  padding: 3px 4px 3px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  letter-spacing: 0.2px;
+}
+
+.win-titlebar-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.win-window-body {
+  background: var(--face);
+  padding: 12px;
+}
+
+.win-button {
+  background: var(--face);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+
+.win-button:active {
+  border-top: 1px solid var(--border-darkest);
+  border-left: 1px solid var(--border-darkest);
+  border-right: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  box-shadow:
+    inset 1px 1px 0 var(--border-dark),
+    inset -1px -1px 0 var(--border-lightest);
+}
+
+.win-button:disabled {
+  color: var(--border-dark);
+  cursor: default;
+}
+
+.win-input {
+  background: #ffffff;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  padding: 3px 5px;
+}
+
+.win-panel {
+  background: var(--face);
+  padding: 10px;
+}
+
+.progress-track {
+  height: 20px;
+  background: #ffffff;
+  margin: 14px 0;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--titlebar-start),
+    var(--titlebar-start) 6px,
+    var(--titlebar-end) 6px,
+    var(--titlebar-end) 12px
+  );
+  width: 0%;
+  animation-name: progress-fill-anim;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes progress-fill-anim {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.modem-lights {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.modem-light {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.modem-light.blink {
+  animation: modem-blink 0.6s steps(1) infinite;
+}
+
+@keyframes modem-blink {
+  50% {
+    opacity: 0.15;
+  }
+}
+
+.browser-toolbar {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.browser-toolbar input {
+  min-width: 60px;
+}
+
+.browser-viewport {
+  background: #ffffff;
+  min-height: min(60vh, 520px);
+  padding: 12px;
+  overflow-y: auto;
+}
+
+.browser-statusbar {
+  margin-top: 8px;
+  padding: 3px 6px;
+  font-size: 11px;
+}
+
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  background: var(--face);
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 4px;
+  z-index: 500;
+}
+
+.taskbar-start {
+  font-weight: bold;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  padding: 3px 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.taskbar-start-icon {
+  color: #008000;
+}
+
+.taskbar-clock {
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.crt-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 900;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.08) 0px,
+      rgba(0, 0, 0, 0.08) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.25) 100%);
+}
