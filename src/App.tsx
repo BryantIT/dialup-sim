@@ -5,6 +5,7 @@ import ConnectingScreen from "./screens/ConnectingScreen";
 import ConnectedScreen from "./screens/ConnectedScreen";
 import FailedScreen from "./screens/FailedScreen";
 import DevStateSwitcher from "./dev/DevStateSwitcher";
+import SitePreview from "./dev/SitePreview";
 
 function App() {
   const [state, setState] = useState<AppState>("dialer");
@@ -46,6 +47,7 @@ function App() {
         </div>
       </div>
       {import.meta.env.DEV && <DevStateSwitcher state={state} setState={setState} />}
+      {import.meta.env.DEV && <SitePreview />}
     </div>
   );
 }
