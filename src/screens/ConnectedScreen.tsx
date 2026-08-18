@@ -1,10 +1,16 @@
-export default function ConnectedScreen() {
+import BrowserChrome from "../components/BrowserChrome";
+
+type Props = {
+  onDisconnect: () => void;
+};
+
+export default function ConnectedScreen({ onDisconnect }: Props) {
   return (
-    <div className="win-panel bevel-in">
-      <p>
-        <strong>Connected screen</strong> (placeholder — built in Phases 3, 5–7)
+    <BrowserChrome onDisconnect={onDisconnect}>
+      <p style={{ marginTop: 0 }}>
+        <strong>Browser content area</strong> (placeholder — built in Phases 4–7)
       </p>
-      <p>Browser chrome, search-portal landing page, and mock-site browsing will go here.</p>
-    </div>
+      <p>The search-portal landing page and mock sites will render here.</p>
+    </BrowserChrome>
   );
 }

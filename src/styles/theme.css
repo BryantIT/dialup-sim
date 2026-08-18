@@ -178,3 +178,23 @@ body {
     opacity: 0.15;
   }
 }
+
+.browser-toolbar {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.browser-viewport {
+  background: #ffffff;
+  min-height: min(60vh, 520px);
+  padding: 12px;
+  overflow-y: auto;
+}
+
+.browser-statusbar {
+  margin-top: 8px;
+  padding: 3px 6px;
+  font-size: 11px;
+}

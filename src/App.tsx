@@ -23,18 +23,25 @@ function App() {
     setState("dialer");
   }
 
+  function handleDisconnect() {
+    setState("dialer");
+  }
+
+  const windowTitle = state === "connected" ? "NetZone Browser" : "Dial-Up Networking";
+  const windowWidth = state === "connected" ? "min(92vw, 960px)" : 480;
+
   return (
     <div className="desktop">
-      <div className="win-window bevel-out" style={{ width: 480 }}>
+      <div className="win-window bevel-out" style={{ width: windowWidth }}>
         <div className="win-titlebar">
-          <span className="win-titlebar-text">Dial-Up Networking</span>
+          <span className="win-titlebar-text">{windowTitle}</span>
         </div>
         <div className="win-window-body">
           {state === "dialer" && <DialerScreen onDial={handleDial} />}
           {state === "connecting" && (
             <ConnectingScreen number={phoneNumber} onSettled={handleConnectingSettled} />
           )}
-          {state === "connected" && <ConnectedScreen />}
+          {state === "connected" && <ConnectedScreen onDisconnect={handleDisconnect} />}
           {state === "failed" && <FailedScreen onRedial={handleRedial} />}
         </div>
       </div>
