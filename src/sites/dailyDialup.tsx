@@ -1,3 +1,4 @@
+import SiteLink from "../components/SiteLink";
 import type { MockSite } from "./types";
 
 const dailyDialup: MockSite = {
@@ -67,7 +68,7 @@ const dailyDialup: MockSite = {
       weightKB: 1,
       node: (
         <p>
-          Featured reader site: <span className="retro-link">Steve's Rad Homepage</span>
+          Featured reader site: <SiteLink address="www.stevesradhomepage.com">Steve's Rad Homepage</SiteLink>
         </p>
       ),
     },

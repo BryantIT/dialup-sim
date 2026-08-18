@@ -1,4 +1,5 @@
 import GuestbookForm from "../components/retro/GuestbookForm";
+import SiteLink from "../components/SiteLink";
 import type { MockSite } from "./types";
 
 const guestbook: MockSite = {
@@ -26,7 +27,7 @@ const guestbook: MockSite = {
       weightKB: 1,
       node: (
         <p>
-          Back to <span className="retro-link">Steve's Rad Homepage</span>
+          Back to <SiteLink address="www.stevesradhomepage.com">Steve's Rad Homepage</SiteLink>
         </p>
       ),
     },

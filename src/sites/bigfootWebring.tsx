@@ -1,4 +1,5 @@
 import WebringBadge from "../components/retro/WebringBadge";
+import SiteLink from "../components/SiteLink";
 import type { MockSite } from "./types";
 
 const bigfootWebring: MockSite = {
@@ -64,8 +65,8 @@ const bigfootWebring: MockSite = {
       weightKB: 1,
       node: (
         <p>
-          Ring member spotlight: <span className="retro-link">Steve's Rad Homepage</span> (he has a
-          hamster, not a Sasquatch, but he's still a believer).
+          Ring member spotlight: <SiteLink address="www.stevesradhomepage.com">Steve's Rad Homepage</SiteLink>{" "}
+          (he has a hamster, not a Sasquatch, but he's still a believer).
         </p>
       ),
     },

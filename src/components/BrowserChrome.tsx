@@ -3,6 +3,7 @@ import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 type Props = {
   onDisconnect: () => void;
   onHome: () => void;
+  onNavigate: (address: string) => void;
   currentAddress: string;
   children: ReactNode;
   statusText?: string;
@@ -11,6 +12,7 @@ type Props = {
 export default function BrowserChrome({
   onDisconnect,
   onHome,
+  onNavigate,
   currentAddress,
   children,
   statusText = "Ready",
@@ -23,7 +25,7 @@ export default function BrowserChrome({
 
   function handleGo(e: FormEvent) {
     e.preventDefault();
-    // Address resolution against known mock sites arrives in Phase 7.
+    onNavigate(address);
   }
 
   return (

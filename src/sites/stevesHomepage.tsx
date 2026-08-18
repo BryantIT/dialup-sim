@@ -1,5 +1,6 @@
 import UnderConstructionBanner from "../components/retro/UnderConstructionBanner";
 import HitCounter from "../components/retro/HitCounter";
+import SiteLink from "../components/SiteLink";
 import type { MockSite } from "./types";
 
 const stevesHomepage: MockSite = {
@@ -21,7 +22,7 @@ const stevesHomepage: MockSite = {
         <p>
           Hi, I'm Steve! Thanks for stopping by my little piece of the World Wide Web.
           This page looks best in 800x600 resolution. Feel free to sign my{" "}
-          <span className="retro-link">guestbook</span> before you leave!
+          <SiteLink address="www.stevesguestbook.com">guestbook</SiteLink> before you leave!
         </p>
       ),
     },
@@ -68,13 +69,13 @@ const stevesHomepage: MockSite = {
           <h2>Cool Links</h2>
           <ul>
             <li>
-              <span className="retro-link">Join the Bigfoot Believers Web Ring</span>
+              <SiteLink address="www.bigfootbelievers.com">Join the Bigfoot Believers Web Ring</SiteLink>
             </li>
             <li>
-              <span className="retro-link">Read the Daily Dial-Up</span>
+              <SiteLink address="www.dailydialup.com">Read the Daily Dial-Up</SiteLink>
             </li>
             <li>
-              <span className="retro-link">Sign my guestbook</span>
+              <SiteLink address="www.stevesguestbook.com">Sign my guestbook</SiteLink>
             </li>
           </ul>
         </>
